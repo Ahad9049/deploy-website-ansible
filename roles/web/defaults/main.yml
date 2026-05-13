@@ -1,3 +1,8 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # defaults file for roles/web
+web_service_name: nginx
+
+web_root_path: /var/www/html
+
+nginx_user: "{{ 'www-data' if ansible_distribution == 'Ubuntu' else 'nginx' }}"
