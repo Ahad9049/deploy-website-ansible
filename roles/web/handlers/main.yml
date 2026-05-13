@@ -1,0 +1,12 @@
+#SPDX-License-Identifier: MIT-0
+---
+# handlers file for roles/web
+
+- name: validate nginx config
+  command: nginx -t
+
+- name: restart web
+  service:
+    name: nginx
+    state: restarted
+    enabled: true
