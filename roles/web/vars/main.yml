@@ -3,4 +3,5 @@
 # vars file for roles/web
 web_service_name: nginx
 nginx_port: 80
+nginx_user: "{{ 'www-data' if ansible_distribution == 'Ubuntu' else 'nginx' }}"
 
