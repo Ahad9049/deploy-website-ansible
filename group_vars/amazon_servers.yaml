@@ -1,0 +1,2 @@
+ngnix_user: nginx
+web_root_path: /usr/share/nginx/html
