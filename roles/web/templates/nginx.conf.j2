@@ -1,5 +1,6 @@
 user {{ nginx_user }};
 worker_processes auto;
+
 error_log /var/log/nginx/error.log;
 pid /run/nginx.pid;
 
@@ -8,13 +9,21 @@ events {
 }
 
 http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    sendfile on;
+    keepalive_timeout 65;
+
     server {
         listen {{ nginx_port }};
         server_name _;
 
+        root {{ web_root_path }};
+        index index.html;
+
         location / {
-            root {{ web_root_path }};
-            index index.html;
+            try_files $uri $uri/ =404;
         }
     }
 }
